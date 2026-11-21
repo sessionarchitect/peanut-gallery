@@ -1,0 +1,97 @@
+{
+"id": "book",
+"episodes": [
+{"id": "tonight", "m": [
+{"f": "fern", "p": "book", "t": "Book club tonight!! 📚🍷 Did everyone finish?"},
+{"f": "denise", "t": "finish what"},
+{"f": "fern", "t": "The BOOK!!"},
+{"f": "priya", "t": "There's a book?"},
+{"f": "june", "t": "I read it. A woman murders her husband. Very relatable. 😌"},
+{"f": "linda", "t": "MOM."},
+{"f": "june", "t": "Not MY husbands. Those were natural. Mostly.", "w": 2, "r": ["💀6", "😭2"]},
+{"f": "fern", "t": "That's not even the book we picked 😭"},
+{"f": "june", "t": "It's the one I picked. 🍷"},
+{"f": "priya", "t": "I'm here for the wine and to complain about Gary"},
+{"f": "denise", "t": "SAME. i'm married to him 🙃", "r": ["😂5", "🙃3"]}
+]},
+{"id": "crystal", "m": [
+{"f": "fern", "p": "crystal", "t": "New crystal for the group 💜✨ It charges your aura"},
+{"f": "priya", "t": "Fern, how much was that"},
+{"f": "fern", "t": "Energy doesn't have a price, Priya"},
+{"f": "priya", "t": "The tag says $89"},
+{"f": "fern", "t": "The TAG has a price. The energy is free."},
+{"f": "june", "t": "I'll take it. My aura could use a jump. It's 81. 🔋"},
+{"f": "denise", "t": "can it make gary stop sending calendar invites"},
+{"f": "fern", "t": "Nothing can do that. Some energies are too strong. 🔮", "r": ["🔮3"]}
+]},
+{"id": "wall", "m": [
+{"f": "priya", "t": "Today I stared at a wall for 40 minutes. It didn't schedule a single meeting. 🧱"},
+{"f": "fern", "t": "That's called meditation! 🧘"},
+{"f": "priya", "t": "That's called the third floor."},
+{"f": "linda", "t": "I saw you. You looked very peaceful."},
+{"f": "priya", "t": "Linda, please don't tell your family about my wall."},
+{"f": "linda", "t": "I would never. 🤐"},
+{"f": "june", "t": "She told me."},
+{"f": "linda", "t": "MOM."},
+{"f": "june", "t": "I'm in her phone as “Emergency Gossip Contact.” It's very official. 📇", "r": ["😂5"]}
+]},
+{"id": "nextbook", "m": [
+{"f": "fern", "poll": "What should we read next?", "o": ["Something with a murder", "Something with a hot ghost", "Just the wine list", "Literally anything but Gary's LinkedIn"], "n": [2, 2, 3, 4]},
+{"f": "denise", "t": "i voted for “anything but gary's linkedin” twice. i'm also the reason it exists 😔"},
+{"f": "priya", "t": "Denise, did you WRITE his LinkedIn?"},
+{"f": "denise", "t": "“Synergy evangelist. Vibes architect.” that was me. i was tired"},
+{"f": "june", "t": "We all make mistakes in marriage. I made three. 🙃"},
+{"f": "fern", "t": "June, you have to stop saying stuff like that"},
+{"f": "june", "t": "Make me, Fern. 💅", "r": ["💅4"]}
+]},
+{"id": "june_voice", "m": [
+{"f": "june", "v": "0:44", "t": "“Hello girls, I couldn't find the book chat so I'm sending this to all of you. Fern, your crystal is fake. Love you.”"},
+{"f": "fern", "t": "IT IS NOT FAKE"},
+{"f": "denise", "t": "june is the only one in this club who reads and she uses it for evil"},
+{"f": "june", "t": "I use it for TRUTH, dear. 📖"},
+{"f": "priya", "t": "honestly i aspire to be june at 81"},
+{"f": "june", "t": "Start by outliving your boss. It's very freeing. 🕊️", "r": ["🙌4", "💀3"]}
+]},
+{"id": "wine", "m": [
+{"f": "linda", "t": "What wine should I bring? 🍷"},
+{"f": "fern", "t": "Something with good energy"},
+{"f": "denise", "t": "something with a twist-off cap"},
+{"f": "june", "t": "Something in a box. I'm 81. I don't have time for corks."},
+{"f": "priya", "t": "Something strong enough to forget the 4:55 sync"},
+{"f": "linda", "t": "So... one of each? 😅"},
+{"f": "june", "t": "Now you're thinking like a Henderson."},
+{"f": "fern", "s": "🍷🍷🍷", "r": ["🥂4"]}
+]},
+{"id": "mug_book", "hidden": true, "m": [
+{"f": "priya", "p": "mug", "t": "My boss's new mug"},
+{"f": "denise", "t": "i bought him that"},
+{"f": "priya", "t": "Denise. Did you mean it?"},
+{"f": "denise", "t": "every word. “okayest” was generous 💅"},
+{"f": "fern", "t": "Gary's aura is beige. I've always said that."},
+{"f": "linda", "t": "Beige is a perfectly good color!!"},
+{"f": "june", "t": "Linda married a beige man and owns a beige mailbox. Let her be. 🤎"},
+{"x": "office", "t": "Denise accidentally sent the mug roast to Gary", "then": "gary_book"}
+]}
+],
+"banter": [
+["fern", "Mercury is in retrograde, so I'm not responsible for anything I say ✨"],
+["denise", "wine?"],
+["june", "Wine."],
+["priya", "I'm on chapter 1. Of my breakdown 🙃"],
+["linda", "Bringing my famous dip! (from the store) 🥣"],
+["fern", "Who took my sage bundle"],
+["june", "I did. It smells like a campfire with opinions."],
+["denise", "gary just said “let's put a pin in it” to our dog"],
+["priya", "Denise, I am so sorry"],
+["denise", "the dog put a pin in it. the dog left 🐕"],
+["fern", "Sending you all healing energy 💜"],
+["june", "Send cash, Fern."],
+["linda", "Love you girls!! 💐"],
+["priya", "what time is book club, i need to know how long i have to pretend i read"],
+["denise", "🍷"],
+["june", "Reminder that I'm the only one who reads in this club. 📖"],
+["fern", "My tarot says someone in this chat is lying about the book"],
+["priya", "It's all of us, Fern."],
+["denise", "gary bought a standing desk. he sits at it"]
+]
+}

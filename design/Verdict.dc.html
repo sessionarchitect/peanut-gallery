@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Peanut Gallery · The Tea</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#111418;overscroll-behavior:none}
+*{scrollbar-width:none;-ms-overflow-style:none;-webkit-tap-highlight-color:transparent}
+*::-webkit-scrollbar{display:none;width:0;height:0}
+.person .av{transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.person:hover .av{transform:rotate(-14deg) scale(1.08)}
+.story{transition:border-radius .45s cubic-bezier(.34,1.56,.64,1),transform .35s cubic-bezier(.34,1.56,.64,1) !important}
+.story.open{border-radius:30px !important}
+a{color:inherit}a:hover{color:inherit}
+button{font:inherit}
+:focus-visible{outline:2px solid #9CCFBE;outline-offset:3px}
+.story{cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.story:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.14)}
+.chev{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.story.open .chev{transform:rotate(180deg)}
+@keyframes open{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.more{animation:open .35s ease both}
+.person{transition:transform .3s ease}
+.person:hover{transform:translateX(3px)}
+.chip{transition:transform .25s ease}
+.person:hover .chip{transform:translateY(-1px)}
+.listen{transition:transform .25s ease}
+.listen:hover{transform:translateX(3px)}
+.nav a{transition:opacity .2s ease}.nav a:hover{opacity:1 !important}
+.scroll{scrollbar-width:none}.scroll::-webkit-scrollbar{display:none}
+</style>
+</helmet>
+<div style="width: 100%; height: 100vh; height: 100dvh; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden; font-family: 'Roboto Flex', sans-serif; background-color: {{t.bg}}; color: {{t.text}}">
+<div class="scroll" style="flex-grow: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; padding: 26px 20px 20px 20px">
+<header style="display: flex; flex-direction: column; gap: 4px">
+<h1 style="margin: 0; font-size: 36px; line-height: 1; font-weight: 860; font-variation-settings: 'wdth' 130; letter-spacing: -0.025em">The Tea</h1>
+<span style="font-size: 14px; color: {{t.muted}}">Everyone's connected. Nobody's okay.</span>
+</header>
+<section style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 700">Storylines</h2>
+<sc-for list="{{stories}}" as="s" hint-placeholder-count="4">
+<div class="story {{s.cls}}" style="display: flex; flex-direction: column; border-radius: 22px; background-color: {{t.surf}}">
+<button onClick="{{s.toggle}}" aria-expanded="{{s.expanded}}" style="display: flex; align-items: center; gap: 12px; padding: 14px 14px 14px 16px; border: none; background-color: transparent; color: {{t.text}}; text-align: left; cursor: pointer">
+<span style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1; min-width: 0">
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: {{s.color}}">{{s.where}}</span>
+<span style="font-size: 16px; font-weight: 700">{{s.title}}</span>
+</span>
+<span style="flex-shrink: 0; height: 26px; padding: 0 10px; border-radius: 13px; display: flex; align-items: center; font-size: 12px; font-weight: 600; background-color: {{t.surf2}}; color: {{t.muted}}">{{s.status}}</span>
+<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; color: {{t.muted}}"><path d="M6 9l6 6 6-6"></path></svg>
+</button>
+<sc-if value="{{s.open}}" hint-placeholder-val="{{false}}">
+<div class="more" style="display: flex; flex-direction: column; gap: 12px; padding: 0 16px 16px 16px">
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: {{t.muted}}">{{s.summary}}</p>
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: {{t.muted}}">
+Spice
+<span style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px; width: 70px">
+<sc-for list="{{s.spice}}" as="sp" hint-placeholder-count="5"><span style="height: 6px; border-radius: 3px; background-color: {{sp.c}}"></span></sc-for>
+</span>
+</span>
+<a href="Arena.dc.html" class="listen" style="display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; border-radius: 18px; text-decoration: none; font-size: 13px; font-weight: 700; background-color: {{t.accent}}; color: {{t.accentInk}}">Listen in →</a>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</section>
+<section style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 700">Who's in what</h2>
+<span style="font-size: 13px; color: {{t.muted}}">People in more than one chat carry the tea between them.</span>
+</div>
+<div style="display: flex; flex-direction: column; border-radius: 22px; padding: 6px 14px; background-color: {{t.surf}}">
+<sc-for list="{{people}}" as="p" hint-placeholder-count="6">
+<div class="person" style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid {{p.border}}">
+<span class="av" style="width: 40px; height: 40px; flex-shrink: 0; clip-path: {{p.shape}}; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #1B1E22; background-color: {{p.color}}">{{p.initial}}</span>
+<span style="display: flex; flex-direction: column; gap: 5px; min-width: 0">
+<span style="font-size: 14px; font-weight: 700">{{p.name}} <span style="font-weight: 500; color: {{t.muted}}">· {{p.role}}</span></span>
+<span style="display: flex; gap: 5px; flex-wrap: wrap">
+<sc-for list="{{p.chats}}" as="ch" hint-placeholder-count="2">
+<span class="chip" style="height: 22px; padding: 0 8px; border-radius: 11px; display: flex; align-items: center; font-size: 11px; font-weight: 600; background-color: {{t.surf2}}; color: {{t.text}}">{{ch.n}}</span>
+</sc-for>
+</span>
+</span>
+</div>
+</sc-for>
+</div>
+</section>
+</div>
+<nav class="nav" aria-label="Main" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); height: 80px; flex-shrink: 0; background-color: {{t.surf}}">
+<a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 12px; font-weight: 600; opacity: 0.75; color: {{t.text}}">
+<span style="height: 30px; display: flex; align-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path></svg></span>
+Chats
+</a>
+<a href="Verdict.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 12px; font-weight: 700; color: {{t.text}}">
+<span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background-color: {{t.accentSoft}}; color: {{t.accentText}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z"></path><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"></path><path d="M9 3c0 1.5 1 1.5 1 3M13 3c0 1.5 1 1.5 1 3"></path></svg></span>
+The Tea
+</a>
+<a href="Builder.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 12px; font-weight: 600; opacity: 0.75; color: {{t.text}}">
+<span style="height: 30px; display: flex; align-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="17" r="2"></circle></svg></span>
+Controls
+</a>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["Night","Day"],"default":"Night"},"$preview":{"width":412,"height":915}}'>
+var THEMES = {
+  Night: { bg: '#111418', surf: '#191D22', surf2: '#283039', line: '#20252B', text: '#ECEEF0', muted: '#9BA4AE', accent: '#9CCFBE', accentInk: '#0F1D19', accentSoft: '#1F2F2A', accentText: '#A8DCCB', spiceOff: '#323A44' },
+  Day: { bg: '#F4F2EE', surf: '#FFFFFF', surf2: '#EFECE6', line: '#E6E2DA', text: '#22262B', muted: '#5C626A', accent: '#2F7563', accentInk: '#FFFFFF', accentSoft: '#D7EAE3', accentText: '#255E50', spiceOff: '#E2DED6' }
+};
+var SHAPE_FN = {
+  circle: function () { return 0.5; },
+  cookie: function (t) { return 0.5 * (1 + 0.07 * Math.cos(9 * (t + Math.PI / 2))); },
+  clover: function (t) { return 0.5 * (1 + 0.2 * Math.cos(4 * t)); },
+  sunny: function (t) { return 0.5 * (1 + 0.05 * Math.cos(8 * t)); },
+  flower: function (t) { return 0.5 * (1 + 0.12 * Math.cos(6 * t)); },
+  gem: function (t) { return 0.5 * (1 + 0.06 * Math.cos(6 * t + Math.PI)); },
+  burst: function (t) { return 0.5 * (1 + 0.085 * Math.cos(12 * t)); },
+  squircle: function (t) { var c = Math.abs(Math.cos(t)), s = Math.abs(Math.sin(t)); return 0.5 / Math.pow(Math.pow(c, 4) + Math.pow(s, 4), 0.25); }
+};
+var SHAPE_CACHE = {};
+function shape(k) {
+  if (SHAPE_CACHE[k]) { return SHAPE_CACHE[k]; }
+  var f = SHAPE_FN[k] || SHAPE_FN.circle, pts = [], n = 56, i;
+  for (i = 0; i < n; i++) { var a = 2 * Math.PI * i / n - Math.PI / 2, r = f(a); pts.push([0.5 + r * Math.cos(a), 0.5 + r * Math.sin(a)]); }
+  var xs = pts.map(function (p) { return p[0]; }), ys = pts.map(function (p) { return p[1]; });
+  var mnx = Math.min.apply(null, xs), mxx = Math.max.apply(null, xs), mny = Math.min.apply(null, ys), mxy = Math.max.apply(null, ys);
+  var sc = 1 / Math.max(mxx - mnx, mxy - mny), cx = (mnx + mxx) / 2, cy = (mny + mxy) / 2;
+  SHAPE_CACHE[k] = 'polygon(' + pts.map(function (p) { return ((0.5 + (p[0] - cx) * sc) * 100).toFixed(1) + '% ' + ((0.5 + (p[1] - cy) * sc) * 100).toFixed(1) + '%'; }).join(',') + ')';
+  return SHAPE_CACHE[k];
+}
+var PSHAPE = { Linda: 'cookie', Tyler: 'burst', Rick: 'squircle', Priya: 'sunny', Mia: 'clover', Gary: 'gem' };
+var STORIES = [
+  { where: 'FAMILY × OFFICE', color: '#E6D58F', title: 'The VP lie', status: 'Boiling', heat: 5, summary: "Tyler's “VP” title has survived three days. His mom approves his paychecks. Grandma doesn't know yet, and everyone is terrified of the day she finds out." },
+  { where: 'FAMILY × HOA', color: '#A7C7C2', title: 'The 1997 casserole', status: 'Cold case', heat: 3, summary: "Barb brings it up at every HOA meeting. June refuses to elaborate. Rick starts sweating whenever anyone says “Pyrex.”" },
+  { where: 'OFFICE × BOOK CLUB', color: '#D9A3B0', title: 'Priya vs. the 4:55 sync', status: 'Brewing', heat: 4, summary: "Priya now reads one page of a novel for every Gary email. She's on page 212. The book club has never discussed a book." },
+  { where: 'NIGHT SHIFT × FAMILY', color: '#9DBFA8', title: 'Fork guy', status: 'Recurring', heat: 2, summary: "A man keeps showing up to the ER holding a fork. Mia has stopped asking. The Hendersons started a betting pool on why." }
+];
+var PEOPLE = [
+  { name: 'Linda', role: 'Mom, payroll', color: '#E8B79E', chats: ['Family', 'Q3 Synergy', 'Book Club'] },
+  { name: 'Tyler', role: 'Intern, “VP”', color: '#E6D58F', chats: ['Family', 'Q3 Synergy'] },
+  { name: 'Rick', role: 'Dad, beige loyalist', color: '#9EC1E0', chats: ['Family', 'HOA'] },
+  { name: 'Priya', role: 'HR, tired', color: '#D9A3B0', chats: ['Q3 Synergy', 'Book Club'] },
+  { name: 'Mia', role: 'ER nurse', color: '#9DBFA8', chats: ['Family', 'Night Shift'] },
+  { name: 'Gary', role: 'Manager, vibes', color: '#C9C4B5', chats: ['Q3 Synergy', 'HOA'] }
+];
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { open: 0 };
+  }
+  renderVals() {
+    var self = this;
+    var t = THEMES[this.props.theme] || THEMES.Night;
+    var stories = STORIES.map(function (s, i) {
+      var on = self.state.open === i;
+      var spice = [];
+      for (var k = 0; k < 5; k++) { spice.push({ c: k < s.heat ? s.color : t.spiceOff }); }
+      return {
+        where: s.where, color: s.color, title: s.title, status: s.status, summary: s.summary, spice: spice,
+        open: on, cls: on ? 'open' : '', expanded: on ? 'true' : 'false',
+        toggle: function () { self.setState({ open: on ? -1 : i }); }
+      };
+    });
+    var people = PEOPLE.map(function (p, i) {
+      return {
+        name: p.name, role: p.role, color: p.color, initial: p.name.charAt(0), shape: shape(PSHAPE[p.name]),
+        chats: p.chats.map(function (n) { return { n: n }; }),
+        border: i === PEOPLE.length - 1 ? 'transparent' : t.line
+      };
+    });
+    return { t: t, stories: stories, people: people };
+  }
+}
+</script>
+</body>
+</html>

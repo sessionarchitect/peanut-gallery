@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Peanut Gallery · Shared photos</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&amp;family=Anton&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#111418;overscroll-behavior:none}
+*{scrollbar-width:none;-ms-overflow-style:none;-webkit-tap-highlight-color:transparent}
+*::-webkit-scrollbar{display:none;width:0;height:0}
+.fchip{transition:border-radius .45s cubic-bezier(.34,1.56,.64,1),background-color .25s ease,color .25s ease,transform .3s cubic-bezier(.34,1.56,.64,1) !important}
+a{color:inherit}a:hover{color:inherit}
+button{font:inherit}
+:focus-visible{outline:2px solid #9CCFBE;outline-offset:3px}
+.scroll{scrollbar-width:none}.scroll::-webkit-scrollbar{display:none}
+.filters{scrollbar-width:none}.filters::-webkit-scrollbar{display:none}
+.fchip{cursor:pointer;transition:background-color .25s ease,color .25s ease,transform .2s ease}
+.fchip:hover{transform:translateY(-1px)}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.tile{animation:rise .45s cubic-bezier(.2,.8,.2,1) both;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.tile:hover{transform:translateY(-3px) rotate(-.5deg);box-shadow:0 12px 26px rgba(0,0,0,.2)}
+.back{transition:transform .2s ease}.back:hover{transform:translateX(-2px)}
+</style>
+</helmet>
+<div style="width: 100%; height: 100vh; height: 100dvh; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden; font-family: 'Roboto Flex', sans-serif; background-color: {{t.bg}}; color: {{t.text}}">
+<header style="display: flex; align-items: center; gap: 10px; padding: 18px 16px 6px 10px">
+<a href="Arena.dc.html" class="back" aria-label="Back to the live chat" style="width: 44px; height: 44px; flex-shrink: 0; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: {{t.text}}">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+</a>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<h1 style="margin: 0; font-size: 26px; line-height: 1.05; font-weight: 860; font-variation-settings: 'wdth' 125; letter-spacing: -0.02em">Shared photos</h1>
+<span style="font-size: 13px; color: {{t.muted}}">{{countLine}}</span>
+</div>
+</header>
+<div class="filters" role="radiogroup" aria-label="Filter by chat" style="display: flex; gap: 8px; overflow-x: auto; padding: 10px 20px 14px 20px">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="6">
+<button class="fchip" role="radio" aria-checked="{{f.checked}}" onClick="{{f.pick}}" style="flex-shrink: 0; height: 36px; padding: 0 14px; border-radius: 18px; border: none; font-size: 13px; font-weight: 600; background-color: {{f.bg}}; color: {{f.fg}}">{{f.label}}</button>
+</sc-for>
+</div>
+<div class="scroll" style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 0 20px 24px 20px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="8">
+<figure class="tile" style="margin: 0; display: flex; flex-direction: column; border-radius: 18px; overflow: hidden; background-color: {{t.surf}}">
+<dc-import name="Pic" kind="{{it.kind}}" top="{{it.top}}" bot="{{it.bot}}" hint-size="180px,127px"></dc-import>
+<figcaption style="display: flex; align-items: center; gap: 8px; padding: 8px 10px 10px 10px">
+<span style="width: 24px; height: 24px; flex-shrink: 0; clip-path: {{it.shape}}; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: #1B1E22; background-color: {{it.color}}">{{it.initial}}</span>
+<span style="display: flex; flex-direction: column; min-width: 0">
+<span style="font-size: 12px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{it.who}}</span>
+<span style="font-size: 11px; color: {{t.muted}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{it.chatName}}</span>
+</span>
+</figcaption>
+</figure>
+</sc-for>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["Night","Day"],"default":"Night"},"$preview":{"width":412,"height":915}}'>
+var THEMES = {
+  Night: { bg: '#111418', surf: '#191D22', surf2: '#20252B', text: '#ECEEF0', muted: '#9BA4AE', accent: '#9CCFBE', accentInk: '#0F1D19' },
+  Day: { bg: '#F4F2EE', surf: '#FFFFFF', surf2: '#EFECE6', text: '#22262B', muted: '#5C626A', accent: '#2F7563', accentInk: '#FFFFFF' }
+};
+var SHAPE_FN = {
+  circle: function () { return 0.5; },
+  cookie: function (t) { return 0.5 * (1 + 0.07 * Math.cos(9 * (t + Math.PI / 2))); },
+  clover: function (t) { return 0.5 * (1 + 0.2 * Math.cos(4 * t)); },
+  sunny: function (t) { return 0.5 * (1 + 0.05 * Math.cos(8 * t)); },
+  flower: function (t) { return 0.5 * (1 + 0.12 * Math.cos(6 * t)); },
+  gem: function (t) { return 0.5 * (1 + 0.06 * Math.cos(6 * t + Math.PI)); },
+  burst: function (t) { return 0.5 * (1 + 0.085 * Math.cos(12 * t)); },
+  squircle: function (t) { var c = Math.abs(Math.cos(t)), s = Math.abs(Math.sin(t)); return 0.5 / Math.pow(Math.pow(c, 4) + Math.pow(s, 4), 0.25); }
+};
+var SHAPE_CACHE = {};
+function shape(k) {
+  if (SHAPE_CACHE[k]) { return SHAPE_CACHE[k]; }
+  var f = SHAPE_FN[k] || SHAPE_FN.circle, pts = [], n = 56, i;
+  for (i = 0; i < n; i++) { var a = 2 * Math.PI * i / n - Math.PI / 2, r = f(a); pts.push([0.5 + r * Math.cos(a), 0.5 + r * Math.sin(a)]); }
+  var xs = pts.map(function (p) { return p[0]; }), ys = pts.map(function (p) { return p[1]; });
+  var mnx = Math.min.apply(null, xs), mxx = Math.max.apply(null, xs), mny = Math.min.apply(null, ys), mxy = Math.max.apply(null, ys);
+  var sc = 1 / Math.max(mxx - mnx, mxy - mny), cx = (mnx + mxx) / 2, cy = (mny + mxy) / 2;
+  SHAPE_CACHE[k] = 'polygon(' + pts.map(function (p) { return ((0.5 + (p[0] - cx) * sc) * 100).toFixed(1) + '% ' + ((0.5 + (p[1] - cy) * sc) * 100).toFixed(1) + '%'; }).join(',') + ')';
+  return SHAPE_CACHE[k];
+}
+var PSH = { linda: 'cookie', rick: 'squircle', june: 'flower', tyler: 'burst', mia: 'clover', gary: 'gem', barb: 'cookie', denise: 'flower', fern: 'sunny', marcus: 'burst', priya: 'sunny' };
+var PEOPLE = {
+  linda: ['Linda', 'L', '#E8B79E'], rick: ['Rick', 'R', '#9EC1E0'], june: ['Grandma June', 'J', '#B8A9D9'], tyler: ['Tyler', 'T', '#E6D58F'], mia: ['Mia', 'M', '#9DBFA8'],
+  gary: ['Gary', 'G', '#C9C4B5'], barb: ['Barb', 'B', '#E3A3A3'], denise: ['Denise', 'D', '#D6B8E0'], fern: ['Fern', 'F', '#A7C7C2'], marcus: ['Marcus', 'M', '#A9B8E8'], priya: ['Priya', 'P', '#D9A3B0']
+};
+var CHATN = { family: 'Henderson Family', office: 'Q3 Synergy', hoa: 'Lakeview HOA', book: 'Book Club', er: 'Night Shift' };
+var ITEMS = [
+  ['casserole', 'june', 'family'], ['thermostat', 'rick', 'family'], ['cat', 'june', 'family'], ['selfie', 'rick', 'family'],
+  ['sunset', 'linda', 'family'], ['labelmaker', 'tyler', 'family'], ['raccoon', 'tyler', 'family', 'Me launching my 5th podcast', 'My 0 listeners'],
+  ['mailbox', 'rick', 'family'], ['invite', 'gary', 'office'], ['receipt', 'linda', 'office'], ['whiteboard', 'gary', 'office'],
+  ['mug', 'gary', 'office'], ['vending', 'tyler', 'office'], ['hoaletter', 'barb', 'hoa'], ['gnome', 'barb', 'hoa'],
+  ['parking', 'barb', 'hoa'], ['raccoon', 'denise', 'hoa', 'When Barb says', '“Friendly reminder”'], ['book', 'fern', 'book'],
+  ['crystal', 'fern', 'book'], ['xray', 'mia', 'er'], ['coffee', 'marcus', 'er'], ['plant', 'linda', 'family'], ['bingo', 'june', 'book']
+];
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { filter: 'all' }; }
+  renderVals() {
+    var self = this;
+    var t = THEMES[this.props.theme] || THEMES.Night;
+    var f = this.state.filter;
+    var items = ITEMS.filter(function (x) { return f === 'all' || x[2] === f; }).map(function (x) {
+      var p = PEOPLE[x[1]];
+      return { kind: x[0], top: x[3] || '', bot: x[4] || '', who: p[0], initial: p[1], color: p[2], shape: shape(PSH[x[1]]), chatName: CHATN[x[2]] };
+    });
+    var filters = [['all', 'All chats']].concat(Object.keys(CHATN).map(function (k) { return [k, CHATN[k]]; })).map(function (o) {
+      var on = f === o[0];
+      return { label: o[1], checked: on ? 'true' : 'false', bg: on ? t.accent : t.surf, fg: on ? t.accentInk : t.text, pick: function () { self.setState({ filter: o[0] }); } };
+    });
+    return { t: t, items: items, filters: filters, countLine: items.length + ' photos and memes, all evidence' };
+  }
+}
+</script>
+</body>
+</html>

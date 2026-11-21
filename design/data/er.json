@@ -1,0 +1,107 @@
+{
+"id": "er",
+"episodes": [
+{"id": "forkguy", "m": [
+{"f": "mia", "p": "xray", "t": "fork guy. 4th time this month 🍴"},
+{"f": "marcus", "t": "should we... ask?"},
+{"f": "jo", "t": "30 years in this ER, Marcus. We do NOT ask."},
+{"f": "okafor", "t": "Remove the fork. Discharge the man. Bless the fork."},
+{"f": "sal", "t": "he waved at me on the way in. we're friends now 👋"},
+{"f": "marcus", "t": "is that normal"},
+{"f": "jo", "t": "Nothing here is normal. That's the job. Eat your sandwich. 🥪", "r": ["🫡4"]}
+]},
+{"id": "coffee", "m": [
+{"f": "marcus", "p": "coffee", "t": "is this coffee safe to drink"},
+{"f": "jo", "t": "That pot has been here longer than you have."},
+{"f": "okafor", "t": "Statistically, it's survived more codes than most of us."},
+{"f": "mia", "t": "it's not coffee anymore. it's a culture 🧫"},
+{"f": "marcus", "t": "i drank some"},
+{"f": "jo", "t": "Then you're one of us now. 🫡"},
+{"f": "sal", "t": "welcome to night shift kid", "r": ["☕4", "💀2"]}
+]},
+{"id": "firstsolo", "m": [
+{"f": "marcus", "t": "first solo night!! i'm so ready 💪"},
+{"f": "marcus", "t": "update: a man came in with a cat stuck to his head", "w": 2},
+{"f": "okafor", "t": "Not stuck. Emotionally attached."},
+{"f": "mia", "t": "the cat was fine. the man was mostly fine"},
+{"f": "marcus", "t": "the cat bit me"},
+{"f": "jo", "t": "Welcome to medicine. ✨"},
+{"f": "marcus", "t": "do i need a shot"},
+{"f": "okafor", "t": "You need a nap. And probably a shot."},
+{"f": "sal", "s": "🐈", "r": ["😂5"]}
+]},
+{"id": "dinner_er", "m": [
+{"f": "mia", "p": "vending", "t": "dinner 🍫"},
+{"f": "jo", "t": "That's not dinner, that's a cry for help."},
+{"f": "mia", "t": "it's a cry for help with caramel"},
+{"f": "okafor", "t": "I had a bag of pretzels and a moment of silence."},
+{"f": "marcus", "t": "same but the pretzels were from the floor"},
+{"f": "jo", "t": "MARCUS."},
+{"f": "marcus", "t": "five second rule"},
+{"f": "okafor", "t": "In this building, the five second rule is a five millisecond rule. 🦠", "r": ["🦠3", "😭2"]}
+]},
+{"id": "parking_er", "m": [
+{"f": "sal", "t": "update from the front desk: a man asked if we have “VIP parking”"},
+{"f": "jo", "t": "We have ambulance parking."},
+{"f": "sal", "t": "he said “perfect” and parked there 🚑"},
+{"f": "mia", "t": "was it a beige car"},
+{"f": "sal", "t": "...yes. how did you know"},
+{"f": "mia", "t": "it's my dad's neighbor Gary. he parks across everything 🤦‍♀️"},
+{"f": "okafor", "t": "Tow it. Gently. With love."},
+{"f": "sal", "t": "towing it with love 🫶"},
+{"x": "hoa", "t": "Mia told her dad. Rick told the HOA.", "then": "gary_er"}
+]},
+{"id": "codebeige", "m": [
+{"f": "okafor", "t": "Reminder: “Code Beige” is not a real code. Stop paging it. 📟"},
+{"f": "jo", "t": "It is now. It means Gary's in the building."},
+{"f": "marcus", "t": "who's gary"},
+{"f": "mia", "t": "the human version of a calendar invite"},
+{"f": "sal", "t": "he tried to give me a business card that says “synergy evangelist”"},
+{"f": "okafor", "t": "Fine. Code Beige is approved.", "r": ["🤎5", "😂3"]}
+]},
+{"id": "fullmoon", "m": [
+{"f": "jo", "t": "Full moon tonight. Pray for us. 🌕"},
+{"f": "marcus", "t": "that's a myth, studies show—"},
+{"f": "jo", "t": "Marcus, it's 9:04 and we've had three pirates."},
+{"f": "marcus", "t": "three??"},
+{"f": "sal", "t": "four. one's in the parking lot. he's fine. he has a parrot"},
+{"f": "mia", "t": "is the parrot fine"},
+{"f": "sal", "t": "the parrot is the most fine one here 🦜"},
+{"f": "okafor", "v": "0:21", "t": "“I'm not saying the moon did it. I'm saying I've stopped arguing with the moon.”"},
+{"f": "marcus", "t": "noted. updating my research"}
+]},
+{"id": "fork_poll", "hidden": true, "m": [
+{"f": "mia", "shot": {"c": "Henderson Family", "f": "tyler", "t": "family betting pool is OPEN 💸"}, "t": "my family started a betting pool on fork guy"},
+{"f": "jo", "t": "Put me down for $40 on spy. 🕵️"},
+{"f": "okafor", "t": "I'll take “he's just like that.” Occam's fork."},
+{"f": "marcus", "t": "is it ethical to bet on patients"},
+{"f": "jo", "t": "It's ethical to bet on FORKS, Marcus."},
+{"f": "sal", "t": "5 bucks on “he has a crush on someone here” 👀"},
+{"f": "mia", "t": "who"},
+{"f": "sal", "t": "no comment. but he always asks if jo's working"},
+{"f": "jo", "t": "Absolutely not. 😑", "r": ["👀6", "😂3"]},
+{"x": "family", "t": "Mia sent the update to Henderson Family", "then": "fork_family"}
+]}
+],
+"banter": [
+["jo", "Quiet night. Don't say it."],
+["marcus", "it's so quiet tonight"],
+["jo", "MARCUS. 😡"],
+["okafor", "Who keeps putting stickers on the defibrillator 🤨"],
+["sal", "not me"],
+["sal", "ok it was me. it looked sad ⚡"],
+["mia", "3am. the vending machine hummed at me and i felt seen"],
+["jo", "Bring snacks or don't come back"],
+["marcus", "is it normal to hear the ceiling talk"],
+["okafor", "Go home, Marcus."],
+["mia", "awake for 19 hours. i can see sounds 🌈"],
+["sal", "someone left a fork at the front desk. we all know whose 🍴"],
+["jo", "Hydrate. I'm not asking. 💧"],
+["okafor", "👍"],
+["marcus", "i love this job (i'm crying)"],
+["mia", "🫠"],
+["jo", "Someone ate my labeled yogurt. The label said JO. In marker. 😤"],
+["sal", "the yogurt is at peace now"],
+["okafor", "Charting is done. I am a ghost. Do not page me. 👻"]
+]
+}

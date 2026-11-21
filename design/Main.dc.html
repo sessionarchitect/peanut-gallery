@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Peanut Gallery · Chats</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#111418;overscroll-behavior:none}
+*{scrollbar-width:none;-ms-overflow-style:none;-webkit-tap-highlight-color:transparent}
+*::-webkit-scrollbar{display:none;width:0;height:0}
+a{color:inherit}a:hover{color:inherit}
+button{font:inherit}
+:focus-visible{outline:2px solid #A8DCCB;outline-offset:3px}
+@keyframes breathe{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.75)}}
+.live{animation:breathe 2.4s ease-in-out infinite}
+@keyframes dot{0%,80%,100%{opacity:.35;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.dots span{display:inline-block;width:5px;height:5px;border-radius:3px;background:currentColor;animation:dot 1.3s infinite}
+.dots span:nth-child(2){animation-delay:.16s}.dots span:nth-child(3){animation-delay:.32s}
+@keyframes wave{from{transform:translateX(0)}to{transform:translateX(-24px)}}
+.wavy{animation:wave 1.4s linear infinite}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.in{animation:rise .6s cubic-bezier(.05,.7,.1,1) both}
+.hero{transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.hero:hover{transform:translateY(-3px) scale(1.01)}
+.fab{transition:transform .6s cubic-bezier(.34,1.56,.64,1)}
+.fab svg{transition:transform .6s cubic-bezier(.34,1.56,.64,1)}
+.hero:hover .fab{transform:rotate(60deg) scale(1.08)}
+.hero:hover .fab svg{transform:rotate(-60deg)}
+.stack span{transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
+.hero:hover .stack span:nth-child(1){transform:translateX(-4px) rotate(-8deg)}
+.hero:hover .stack span:nth-child(3){transform:translateX(4px) rotate(8deg)}
+.tea{transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease}
+.tea:hover{transform:rotate(0deg) translateY(-4px) !important;box-shadow:0 14px 28px rgba(0,0,0,.24)}
+.row{transition:border-radius .45s cubic-bezier(.34,1.56,.64,1),background-color .3s ease,transform .3s cubic-bezier(.34,1.56,.64,1)}
+.row:hover{border-radius:22px !important}
+.row:active{transform:scale(.98)}
+.row .av{transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.row:hover .av{transform:rotate(-14deg) scale(1.06)}
+.bell{cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1),background-color .3s ease}
+.bell:hover{transform:rotate(-14deg) scale(1.08)}
+.ibtn{transition:transform .3s cubic-bezier(.34,1.56,.64,1),border-radius .45s cubic-bezier(.34,1.56,.64,1)}
+.ibtn:hover{border-radius:14px !important;transform:rotate(-8deg)}
+.nav a{transition:opacity .2s ease}
+.nav a:hover{opacity:1 !important}
+.nav .pill{transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.nav a:hover .pill{transform:scaleX(1.08)}
+.link{transition:letter-spacing .3s ease}
+.link:hover{letter-spacing:.02em}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</helmet>
+<div style="width: 100%; height: 100vh; height: 100dvh; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden; font-family: 'Roboto Flex', sans-serif; background-color: {{t.bg}}; color: {{t.text}}">
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; padding: 26px 18px 24px 18px">
+<header class="in" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 36px; line-height: 0.98; font-weight: 860; font-variation-settings: 'wdth' 130; letter-spacing: -0.025em">Peanut<br>Gallery</span>
+<span style="font-size: 14px; color: {{t.muted}}">You're a fly on the wall in 5 chats.</span>
+</div>
+<a href="Builder.dc.html" class="ibtn" aria-label="Listening controls" style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 24px; display: flex; align-items: center; justify-content: center; background-color: {{t.s2}}; color: {{t.text}}">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="17" r="2"></circle></svg>
+</a>
+</header>
+<a href="Arena.dc.html" class="hero in" style="display: flex; flex-direction: column; gap: 16px; padding: 20px; border-radius: 32px; text-decoration: none; background-color: {{hero.bg}}; color: {{t.text}}; animation-delay: .06s">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="display: flex; align-items: center; gap: 8px; height: 28px; padding: 0 12px; border-radius: 14px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.08em; background-color: {{t.bg}}; color: {{t.accentText}}"><span class="live" style="width: 8px; height: 8px; border-radius: 4px; background-color: {{t.accent}}"></span>LISTENING NOW</span>
+<span style="font-size: 12px; font-weight: 600; color: {{t.muted}}">1h 12m of drama</span>
+</div>
+<div style="display: flex; align-items: center; gap: 14px">
+<div class="stack" style="display: flex; flex-shrink: 0">
+<sc-for list="{{hero.faces}}" as="fc" hint-placeholder-count="3">
+<span style="width: 52px; height: 52px; margin-right: -12px; display: flex; align-items: center; justify-content: center; background-color: {{hero.ring}}; clip-path: {{fc.shape}}"><span style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-weight: 850; font-size: 16px; color: #1B1E22; background-color: {{fc.color}}; clip-path: {{fc.shape}}">{{fc.initial}}</span></span>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0; padding-left: 14px">
+<span style="font-size: 23px; font-weight: 820; font-variation-settings: 'wdth' 115; letter-spacing: -0.015em">Henderson Family</span>
+<span style="font-size: 14px; line-height: 1.4; color: {{t.muted}}">Grandma: “There was a casserole. And I'd do it again.” 😇</span>
+</div>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1; min-width: 0">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 650; color: {{t.muted}}"><span class="dots" style="display: flex; gap: 3px; color: {{t.accentText}}"><span></span><span></span><span></span></span>Dad has been typing for 4 minutes</span>
+<svg width="100%" height="14" viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true">
+<defs><clipPath id="pgwclip"><rect x="0" y="0" width="156" height="14"></rect></clipPath></defs>
+<g clip-path="url(#pgwclip)"><path class="wavy" d="M0 7 Q6 1 12 7 T24 7 T36 7 T48 7 T60 7 T72 7 T84 7 T96 7 T108 7 T120 7 T132 7 T144 7 T156 7 T168 7 T180 7 T192 7 T204 7" fill="none" stroke="{{t.accent}}" stroke-width="3.5" stroke-linecap="round"></path></g>
+<path d="M164 7 H220" fill="none" stroke="{{t.trackOff}}" stroke-width="3.5" stroke-linecap="round"></path>
+</svg>
+<span style="font-size: 11px; font-weight: 750; letter-spacing: 0.08em; color: {{t.muted}}">DRAMA LEVEL · SIMMERING</span>
+</div>
+<span class="fab" style="width: 64px; height: 64px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: {{t.accent}}; color: {{t.accentInk}}; clip-path: {{hero.fab}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"></path></svg></span>
+</div>
+</a>
+<section class="in" style="display: flex; flex-direction: column; gap: 14px; animation-delay: .12s">
+<div style="display: flex; align-items: baseline; justify-content: space-between">
+<h2 style="margin: 0; font-size: 20px; font-weight: 800; font-variation-settings: 'wdth' 115">Fresh tea</h2>
+<a href="Verdict.dc.html" class="link" style="font-size: 13px; font-weight: 700; text-decoration: none; color: {{t.accentText}}">See how it connects</a>
+</div>
+<div style="display: flex; gap: 14px; overflow-x: auto; margin: 0 -18px; padding: 12px 18px 12px 18px">
+<sc-for list="{{teas}}" as="tc" hint-placeholder-count="3">
+<a href="Verdict.dc.html" class="tea" style="position: relative; flex-shrink: 0; width: 214px; display: flex; flex-direction: column; gap: 10px; padding: 18px 16px 16px 16px; border-radius: 22px; text-decoration: none; background-color: {{t.s2}}; color: {{t.text}}; transform: rotate({{tc.rot}}); box-shadow: 0 6px 16px rgba(0,0,0,0.12)">
+<span aria-hidden="true" style="position: absolute; top: -8px; left: 50%; width: 56px; height: 16px; margin-left: -28px; border-radius: 3px; transform: rotate({{tc.tapeRot}}); background-color: {{t.tape}}"></span>
+<span style="align-self: flex-start; display: flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px 0 4px; border-radius: 12px; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; background-color: {{tc.chipBg}}; color: {{t.text}}"><span style="width: 16px; height: 16px; background-color: {{tc.color}}; clip-path: {{tc.shape}}"></span>{{tc.label}}</span>
+<span style="font-size: 15px; font-weight: 620; line-height: 1.36">{{tc.text}}</span>
+</a>
+</sc-for>
+</div>
+</section>
+<section class="in" style="display: flex; flex-direction: column; gap: 12px; animation-delay: .18s">
+<h2 style="margin: 0; font-size: 20px; font-weight: 800; font-variation-settings: 'wdth' 115">All chats</h2>
+<div style="display: flex; flex-direction: column; gap: 3px">
+<sc-for list="{{chats}}" as="c" hint-placeholder-count="5">
+<div class="row" style="display: flex; align-items: center; gap: 12px; padding: 12px 8px 12px 12px; border-radius: {{c.radius}}; background-color: {{t.s1}}; opacity: {{c.opacity}}">
+<a href="Arena.dc.html" style="flex-grow: 1; min-width: 0; display: flex; align-items: center; gap: 12px; text-decoration: none; color: {{t.text}}">
+<span class="av" style="width: 50px; height: 50px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 850; font-size: 14px; color: #1B1E22; background-color: {{c.color}}; clip-path: {{c.shape}}">{{c.mono}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex-grow: 1">
+<span style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<span style="font-size: 16px; font-weight: 720; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{c.name}}</span>
+<span style="flex-shrink: 0; font-size: 12px; font-weight: 600; color: {{c.statusColor}}">{{c.status}}</span>
+</span>
+<span style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<span style="font-size: 13.5px; line-height: 1.35; color: {{t.muted}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{c.preview}}</span>
+<sc-if value="{{c.hasUnread}}" hint-placeholder-val="{{false}}"><span style="flex-shrink: 0; min-width: 22px; height: 22px; padding: 0 7px; box-sizing: border-box; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 850; background-color: {{t.accent}}; color: {{t.accentInk}}">{{c.unread}}</span></sc-if>
+</span>
+</span>
+</a>
+<button class="bell" onClick="{{c.toggle}}" aria-pressed="{{c.pressed}}" aria-label="{{c.label}}" style="width: 44px; height: 44px; flex-shrink: 0; border-radius: 22px; border: none; display: flex; align-items: center; justify-content: center; background-color: {{c.bellBg}}; color: {{c.bellFg}}">
+<sc-if value="{{c.muted}}" hint-placeholder-val="{{false}}">
+<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 10.5-4"></path><path d="M18 9v4l2 3H8"></path><path d="M10 20a2 2 0 0 0 4 0"></path><path d="M3 3l18 18"></path></svg>
+</sc-if>
+<sc-if value="{{c.unmuted}}" hint-placeholder-val="{{true}}">
+<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0v4l2 3H4l2-3z"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg>
+</sc-if>
+</button>
+</div>
+</sc-for>
+</div>
+</section>
+</div>
+<nav class="nav" aria-label="Main" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); height: 80px; flex-shrink: 0; background-color: {{t.s1}}">
+<a href="Main.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 12px; font-weight: 760; color: {{t.text}}">
+<span class="pill" style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background-color: {{t.accentSoft}}; color: {{t.accentText}}"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path></svg></span>
+Chats
+</a>
+<a href="Verdict.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 12px; font-weight: 600; opacity: 0.72; color: {{t.text}}">
+<span class="pill" style="width: 64px; height: 32px; display: flex; align-items: center; justify-content: center"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z"></path><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"></path><path d="M9 3c0 1.5 1 1.5 1 3M13 3c0 1.5 1 1.5 1 3"></path></svg></span>
+The Tea
+</a>
+<a href="Builder.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 12px; font-weight: 600; opacity: 0.72; color: {{t.text}}">
+<span class="pill" style="width: 64px; height: 32px; display: flex; align-items: center; justify-content: center"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="17" r="2"></circle></svg></span>
+Controls
+</a>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["Night","Day"],"default":"Night"},"$preview":{"width":412,"height":915}}'>
+var THEMES = {
+  Night: { night: true, bg: '#111418', s1: '#191D22', s2: '#20252B', s3: '#283039', text: '#ECEEF0', muted: '#9BA4AE', accent: '#9CCFBE', accentInk: '#0F1D19', accentSoft: '#1F2F2A', accentText: '#A8DCCB', tape: 'rgba(232,213,143,0.55)', trackOff: '#3A434D' },
+  Day: { night: false, bg: '#F4F2EE', s1: '#FFFFFF', s2: '#EFECE6', s3: '#E6E2DA', text: '#22262B', muted: '#5C626A', accent: '#2F7563', accentInk: '#FFFFFF', accentSoft: '#D7EAE3', accentText: '#255E50', tape: 'rgba(214,190,110,0.55)', trackOff: '#D3CFC6' }
+};
+var SHAPE_FN = {
+  circle: function () { return 0.5; },
+  cookie: function (t) { return 0.5 * (1 + 0.07 * Math.cos(9 * (t + Math.PI / 2))); },
+  clover: function (t) { return 0.5 * (1 + 0.2 * Math.cos(4 * t)); },
+  sunny: function (t) { return 0.5 * (1 + 0.05 * Math.cos(8 * t)); },
+  flower: function (t) { return 0.5 * (1 + 0.12 * Math.cos(6 * t)); },
+  gem: function (t) { return 0.5 * (1 + 0.06 * Math.cos(6 * t + Math.PI)); },
+  burst: function (t) { return 0.5 * (1 + 0.085 * Math.cos(12 * t)); },
+  squircle: function (t) { var c = Math.abs(Math.cos(t)), s = Math.abs(Math.sin(t)); return 0.5 / Math.pow(Math.pow(c, 4) + Math.pow(s, 4), 0.25); }
+};
+var SHAPE_CACHE = {};
+function shape(k) {
+  if (SHAPE_CACHE[k]) { return SHAPE_CACHE[k]; }
+  var f = SHAPE_FN[k] || SHAPE_FN.circle, pts = [], n = 56, i;
+  for (i = 0; i < n; i++) { var a = 2 * Math.PI * i / n - Math.PI / 2, r = f(a); pts.push([0.5 + r * Math.cos(a), 0.5 + r * Math.sin(a)]); }
+  var xs = pts.map(function (p) { return p[0]; }), ys = pts.map(function (p) { return p[1]; });
+  var mnx = Math.min.apply(null, xs), mxx = Math.max.apply(null, xs), mny = Math.min.apply(null, ys), mxy = Math.max.apply(null, ys);
+  var sc = 1 / Math.max(mxx - mnx, mxy - mny), cx = (mnx + mxx) / 2, cy = (mny + mxy) / 2;
+  SHAPE_CACHE[k] = 'polygon(' + pts.map(function (p) { return ((0.5 + (p[0] - cx) * sc) * 100).toFixed(1) + '% ' + ((0.5 + (p[1] - cy) * sc) * 100).toFixed(1) + '%'; }).join(',') + ')';
+  return SHAPE_CACHE[k];
+}
+function hexRgb(h) { var n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+function tint(h, a) { var c = hexRgb(h); return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
+function mix(h, bg, a) { var c = hexRgb(h), b = hexRgb(bg); return 'rgb(' + [0, 1, 2].map(function (i) { return Math.round(c[i] * a + b[i] * (1 - a)); }).join(',') + ')'; }
+var CHATS = [
+  { id: 'family', name: 'Henderson Family', mono: 'HF', color: '#E8B79E', sh: 'cookie', status: 'typing', unread: 0, preview: 'Grandma June: 📷 Mr. Biscuits wanted to say hello 🐈' },
+  { id: 'office', name: 'Q3 Synergy Task Force', mono: 'Q3', color: '#C9C4B5', sh: 'squircle', status: '2m', unread: 3, preview: 'Gary: 📅 Quick sync (casual) · Fri 4:55–6:25 PM' },
+  { id: 'hoa', name: 'Lakeview HOA (Official)', mono: 'HOA', color: '#A7C7C2', sh: 'gem', status: '14m', unread: 0, preview: 'Barb: 📷 Meet Gerald, our newest watch volunteer 📹' },
+  { id: 'book', name: 'Book Club (We Don’t Read)', mono: 'BC', color: '#D9A3B0', sh: 'flower', status: '1h', unread: 2, preview: 'Grandma June: 🎤 Voice note · Fern, your crystal is fake' },
+  { id: 'er', name: 'Night Shift, Bay 4', mono: 'ER', color: '#9DBFA8', sh: 'clover', status: '3h', unread: 1, preview: 'Mia: 📷 fork guy. 4th time this month 🍴' }
+];
+var TEAS = [
+  { label: 'FAMILY × OFFICE', color: '#E6D58F', sh: 'burst', rot: '-1.6deg', tapeRot: '4deg', text: 'Tyler told the family he’s “basically a VP.” His mom does payroll at his office. 💼' },
+  { label: 'FAMILY × HOA', color: '#A7C7C2', sh: 'gem', rot: '1.3deg', tapeRot: '-3deg', text: 'Nobody will explain the 1997 casserole. Barb still brings it up. 🥘' },
+  { label: 'OFFICE × BOOK CLUB', color: '#D9A3B0', sh: 'flower', rot: '-0.8deg', tapeRot: '2deg', text: 'Gary’s wife is in the book club. The book club is about Gary. 📚' },
+  { label: 'ER × HOA', color: '#9DBFA8', sh: 'clover', rot: '1.6deg', tapeRot: '-5deg', text: 'Gary parked in the ER’s ambulance bay. Gerald the gnome already knows. 🚑' }
+];
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { muted: { hoa: true } };
+  }
+  renderVals() {
+    var self = this;
+    var t = THEMES[this.props.theme] || THEMES.Night;
+    var heroBg = mix('#E8B79E', t.bg, t.night ? 0.16 : 0.3);
+    var faces = [['L', '#E8B79E', 'cookie'], ['J', '#B8A9D9', 'flower'], ['T', '#E6D58F', 'burst']].map(function (f) { return { initial: f[0], color: f[1], shape: shape(f[2]) }; });
+    var chats = CHATS.map(function (c, i) {
+      var m = !!self.state.muted[c.id];
+      var first = i === 0, last = i === CHATS.length - 1;
+      return {
+        name: c.name, mono: c.mono, color: c.color, shape: shape(c.sh),
+        radius: first ? '28px 28px 8px 8px' : last ? '8px 8px 28px 28px' : '8px',
+        status: m ? 'muted' : c.status === 'typing' ? 'typing…' : c.status,
+        statusColor: c.status === 'typing' && !m ? t.accentText : t.muted,
+        preview: c.preview,
+        unread: c.unread, hasUnread: !m && c.unread > 0,
+        opacity: m ? 0.55 : 1,
+        muted: m, unmuted: !m,
+        bellBg: m ? t.s3 : 'transparent', bellFg: m ? t.text : t.muted,
+        pressed: m ? 'true' : 'false',
+        label: (m ? 'Unmute ' : 'Mute ') + c.name,
+        toggle: function () { var o = Object.assign({}, self.state.muted); o[c.id] = !m; self.setState({ muted: o }); }
+      };
+    });
+    var teas = TEAS.map(function (x) {
+      return { label: x.label, text: x.text, color: x.color, shape: shape(x.sh), rot: x.rot, tapeRot: x.tapeRot, chipBg: tint(x.color, t.night ? 0.22 : 0.4) };
+    });
+    return { t: t, hero: { bg: heroBg, ring: heroBg, faces: faces, fab: shape('cookie') }, chats: chats, teas: teas };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "peanut-gallery-build",
+  "private": true,
+  "scripts": { "build": "node build.js" },
+  "dependencies": {
+    "@fontsource-variable/roboto-flex": "^5.2.8",
+    "@fontsource/anton": "^5.2.6",
+    "@fontsource/figtree": "^5.2.8",
+    "esbuild": "^0.28.2",
+    "preact": "^10.27.2"
+  }
+}
